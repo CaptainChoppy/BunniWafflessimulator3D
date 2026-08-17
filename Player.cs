@@ -64,12 +64,7 @@ public class Player : MonoBehaviour
             return;
         }
     
-        if(MobileMode == false)
-        {
-            Horizontal = Input.GetAxis("Horizontal");
-            Vertical = Input.GetAxis("Vertical");
-        }
-        else
+        if(MobileMode == true)
         {
             if(Up == true)
             {
@@ -88,6 +83,11 @@ public class Player : MonoBehaviour
             {
                 Horizontal = 1;
             }
+        }
+        else
+        {
+            Horizontal = Input.GetAxis("Horizontal");
+            Vertical = Input.GetAxis("Vertical");
         }
 
         if (Input.GetKey(KeyCode.Escape))
