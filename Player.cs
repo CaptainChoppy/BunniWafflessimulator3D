@@ -56,10 +56,18 @@ public class Player : MonoBehaviour
 
     public void GetInputs()
     {
+        Horizontal = 0;
+        Vertical = 0;
+            
+        if(FreezeInputs == true)
+        {
+            return;
+        }
+    
         if(MobileMode == false)
         {
-            Horizontal = 0;
-            Vertical = 0;
+            Horizontal = Input.GetAxis("Horizontal");
+            Vertical = Input.GetAxis("Vertical");
         }
         else
         {
@@ -71,10 +79,6 @@ public class Player : MonoBehaviour
             {
                 Vertical = -1;
             }
-            else
-            {
-                Vertical = 0;
-            }
 
             if (Right == true)
             {
@@ -83,10 +87,6 @@ public class Player : MonoBehaviour
             else if (Left == true)
             {
                 Horizontal = 1;
-            }
-            else
-            {
-                Horizontal = 0;
             }
         }
 
@@ -100,17 +100,6 @@ public class Player : MonoBehaviour
             {
                 GUIManager.SetMenuActive(true);
             }
-        }
-
-        if(FreezeInputs == true)
-        {
-            return;
-        }
-
-        if(MobileMode == false)
-        {
-            Horizontal = Input.GetAxis("Horizontal");
-            Vertical = Input.GetAxis("Vertical");
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
